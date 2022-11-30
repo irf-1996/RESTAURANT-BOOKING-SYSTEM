@@ -1,0 +1,15 @@
+extends homepage
+block content  
+    .content
+        h1 Book Table #{table_id}
+        form(action="/update-booking" method = "POST")
+            input(type='hidden' name ='id' value =table_id)
+            input(type='hidden' name ='status' value ='Booked')
+            label(for="name") Name
+            textarea(name="name", cols="20", rows="1")
+            label(for="note") email id
+            textarea(name="email_id", cols="20", rows="1")
+            label(for="booking-date") Select date
+            input(type="date" name="booked_date")
+            div 
+            input(type="submit" value ='Book') 

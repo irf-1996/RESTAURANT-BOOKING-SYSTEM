@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    style
+      include style1.css
+  body
+  .main-content
+    .logo
+        h1 
+         a(href='/homepage') Restaurant 1
+    .navbar
+        ul(class = "nav-bar") 
+            li 
+                a(href='/homepage') Home
+            li 
+                All Menu
+        
+    .sign-in
+        h1 Sign in
+    .book
+        .form
+             form(action="/table-status" method="POST") 
+                label(for="selected_date")
+                input(type="date" name="selected_date")
+                div 
+                input(type="submit" value="Check Table Availability")
+    .content
+        img(src="/images/restaurant.jpg", alt="img" width = '900px' height ='500px')  
+    .contact
+        h1 Contact
+    .footer
+        h1 Footer
+    block content
+
+    
