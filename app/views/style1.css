@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(179, 227, 116);
+  background-color: rgb(193, 183, 183);
   margin: 0%;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .content {
-  background-color: white;
+  background-color: rgb(236, 213, 121);
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 1;
@@ -55,7 +55,7 @@ body {
 }
 
 .contact {
-  background-color: white;
+  background-color: rgb(236, 213, 121);
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 3;
@@ -63,10 +63,11 @@ body {
 }
 
 .footer {
-  background-color: rgb(64, 62, 62);
+  background-color: rgb(193, 183, 183);
   grid-column-start: 1;
   grid-column-end: 4;
-  color: white;
+  color: rgb(12, 12, 12);
+  text-align: center;
 }
 
 .navbar ul {
