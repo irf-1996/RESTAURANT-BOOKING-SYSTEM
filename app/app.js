@@ -14,9 +14,21 @@ app.set('views', './app/views');
 
 // Get the functions in the db.js file to use
 const db = require('./services/db');
+
+// import table class
+
 const { Table } = require("./models/table");
+
 app.use(express.urlencoded({extended: true}))
 
+// Homepage for restaurant
+
+app.get("/homepage", function(req, res) {
+    // res.send("Welcome to our restaurant!");
+    res.render('homepage');
+});
+
+// route to get table status 
 
 app.post("/table-status", async function(req, res) {
     // console.log(req.body)
@@ -36,18 +48,14 @@ app.post("/table-status", async function(req, res) {
         res.render('table', {data:table.booking_status, booked_date})
 });
 
+// Route to go to booking form
 
-// Homepage for restaurant
-
-app.get("/homepage", function(req, res) {
-    // res.send("Welcome to our restaurant!");
-    res.render('homepage');
-});
-
-app.get("/book-table/:table_id", function(req, res) {
+app.get("/book-table-form/:table_id", function(req, res) {
     var table_id = req.params.table_id;
     res.render('book-table', {table_id});
 });
+
+// Route to book a table
 
 app.post ('/add-booking', async function (req, res) {
     // console.log(req.body)

@@ -1,6 +1,5 @@
 const db = require('../services/db');
 
-
 class Table {
     table_id;
     booked_date;
@@ -13,13 +12,14 @@ class Table {
         this.booked_date = booked_date;
         this.details_to_book = details_to_book;
     }
+
+    // function to get booking status of the tables based on the date selected 
+
     async getBookingStatus () {
         if (typeof this.booking_status !== 'string') {
             var sql = "select * from booking_details where booked_date=?";
             const results = await db.query (sql, [this.booked_date]);
             console.log(results)
-            // this.name = results[0].name;
-            // this.note = results[0].note;
             if (results) {
                 let i = 0;
                 for(let row of results) {
@@ -29,6 +29,9 @@ class Table {
             }
         }
     }
+
+    // function to book table 
+    
     async addBooking (details_to_book) {
         var sql = "INSERT INTO booking_details VALUES (?, ?, ?, ?, ?);"
         const results = await db.query(sql, [details_to_book.id, details_to_book.booked_date, details_to_book.name, details_to_book.email_id, details_to_book.status]);
