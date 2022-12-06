@@ -68,7 +68,7 @@ body {
   grid-column-end: 4;
   color: rgb(12, 12, 12);
   text-align: center;
-  margin: 50px;
+  margin: 10px;
 }
 
 .navbar ul {
@@ -94,6 +94,35 @@ body {
 }
 
 .main-content1 {
-  background-color: antiquewhite;
+  background-color: rgb(167, 158, 158);
   text-align: center;
+  background-image:url('../../../../../images/table2.png');
+  background-repeat:no-repeat ;
+  background-size:cover;
+  background-position:center ;
 }
+a:nth-child(2) {
+  font-size: 20px;
+  padding: 10px;
+  text-decoration: none;
+}
+a:nth-child(3) {
+  font-size: 20px;
+  padding: 10px;
+  text-decoration: none;
+}
+a:nth-child(4) {
+  font-size: 20px;
+  padding-left: 10px;
+  text-decoration: none;
+}
+a:nth-child(2):hover {
+  color: blue;
+}
+a:nth-child(3):hover {
+  color: blue;
+}
+a:nth-child(4):hover {
+  color: blue;
+
+
