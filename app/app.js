@@ -14,10 +14,11 @@ app.set('views', './app/views');
 
 // Get the functions in the db.js file to use
 const db = require('./services/db');
+const { Table } = require("./models/table");
 app.use(express.urlencoded({extended: true}))
 
 
-app.post("/table-status", function(req, res) {
+app.post("/table-status", async function(req, res) {
     // console.log(req.body)
     // params = req.body;
     // var booked_date = params.selected_date;
@@ -28,22 +29,11 @@ app.post("/table-status", function(req, res) {
     } else {
         var booked_date = 2022-11-30;
     }
-    console.log(booked_date);
-    sql = "select * from booking_details where booked_date=?";
-    db.query(sql, [booked_date]).then(results => {
-        console.log(results)
-        var data = ["0","0","0","0","0","0"];
-        console.log(results.length)
-        if (results) {
-            let i =0;
-            for (rows in results) {
-                
-                data[i] = results[i].table_id;
-                i++;
-            }
-        }
-        res.render('table', {data:data, booked_date})
-    });
+    var table = new Table ();
+    table.booked_date = booked_date;
+    await table.getBookingStatus()
+        console.log(table);
+        res.render('table', {data:table.booking_status, booked_date})
 });
 
 
@@ -59,13 +49,12 @@ app.get("/book-table/:table_id", function(req, res) {
     res.render('book-table', {table_id});
 });
 
-app.post ('/update-booking', function (req, res) {
-    console.log(req.body)
-    var selected_date = req.body.booked_date;
-    sql = "INSERT INTO booking_details VALUES (?, ?, ?, ?, ?);"
-    db.query(sql, [req.body.id, req.body.booked_date, req.body.name, req.body.email_id, req.body.status]).then(results => {
-    });
-    res.render('homepage');
+app.post ('/add-booking', async function (req, res) {
+    // console.log(req.body)
+    var table = new Table();
+    table.details_to_book = req.body;
+    await table.addBooking(table.details_to_book)
+        res.render('booking-success', {table});
 });
 
 

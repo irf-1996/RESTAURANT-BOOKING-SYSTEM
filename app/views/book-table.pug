@@ -2,7 +2,7 @@ extends homepage
 block content  
     .content
         h1 Book Table #{table_id}
-        form(action="/update-booking" method = "POST")
+        form(action="/add-booking" method = "POST")
             input(type='hidden' name ='id' value =table_id)
             input(type='hidden' name ='status' value ='Booked')
             label(for="name") Name
