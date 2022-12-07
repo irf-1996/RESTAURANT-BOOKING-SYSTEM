@@ -44,7 +44,7 @@ body {
 }
 
 .content {
-  background-color: rgb(236, 213, 121);
+  background-color: rgb(210, 218, 122);
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 1;
@@ -58,7 +58,7 @@ body {
 }
 
 .contact {
-  background-color: rgb(236, 213, 121);
+  background-color: rgb(210, 218, 122);
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 3;
@@ -100,10 +100,10 @@ body {
 .main_content1 {
   background-color: rgb(167, 158, 158);
   text-align: center;
-  background-image:url('../../../../../images/table2.png');
-  background-repeat:no-repeat ;
-  background-size:cover;
-  background-position:center ;
+  background-image: url("../../../../../images/table2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 a:nth-child(2) {
   font-size: 20px;
@@ -128,4 +128,15 @@ a:nth-child(3):hover {
 }
 a:nth-child(4):hover {
   color: blue;
+}
+li:first-child {
+  padding: 20px;
+}
+a:nth-child(1):hover {
+  color: rgb(255, 149, 0);
+}
+img {
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }

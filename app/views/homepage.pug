@@ -6,8 +6,7 @@ html
   body
   .main_content
     .logo
-        h1 
-         a(href='/homepage') RESTAURANT
+        h1  RESTAURANT
     .navbar
         ul(class = "nav_bar") 
             li 
@@ -24,8 +23,26 @@ html
                 input(type="date" name="selected_date")
                 div 
                 input(type="submit" value="Check Table Availability")
+    
     .content
-        img(src="/images/restaurant.jpg", alt="img" width = '900px' height ='500px')  
+        img.mySlides(src='/images/restaurant.jpg' width='900px' height='500px')
+        img.mySlides(src='/images/image2.jpg' width='900px' height='500px')
+        img.mySlides(src='/images/image3.jpg' width='900px' height='500px')
+        img.mySlides(src='/images/image4.jpg' width='900px' height='500px')
+    script.
+        var myIndex = 0;
+        carousel();
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+        } 
     .contact
         h1 Contact
     .footer
