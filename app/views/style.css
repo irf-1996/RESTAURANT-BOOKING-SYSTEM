@@ -14,13 +14,16 @@ body {
 
 .logo {
   background-color: black;
-  color: white;
+  color: red;
   padding: 0%;
 }
 
 .navbar {
+  display:inline-block;
   background-color: black;
-  color: white;
+  color: red;
+  margin: 0;
+  vertical-align: middle;
 }
 
 .sign-in {
@@ -77,13 +80,14 @@ body {
   padding: 0;
   font-size: 30px;
   color: white;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 
 .navbar li {
   display: inline;
   text-decoration: none;
   color: white;
+  vertical-align: middle;
 }
 
 .navbar a,
