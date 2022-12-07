@@ -128,3 +128,11 @@ a:nth-child(4):hover {
 li:first-child {
   padding: 20px;
 }
+a:nth-child(1):hover {
+  color: rgb(255, 149, 0);
+}
+img {
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
