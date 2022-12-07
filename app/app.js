@@ -19,6 +19,8 @@ const db = require('./services/db');
 
 const { Table } = require("./models/table");
 
+const { Menu } = require("./models/menu");
+
 app.use(express.urlencoded({extended: true}))
 
 // Homepage for restaurant
@@ -30,7 +32,7 @@ app.get("/homepage", function(req, res) {
 
 // route to get table status 
 
-app.post("/table-status", async function(req, res) {
+app.post("/table_status", async function(req, res) {
     // console.log(req.body)
     // params = req.body;
     // var booked_date = params.selected_date;
@@ -50,19 +52,49 @@ app.post("/table-status", async function(req, res) {
 
 // Route to go to booking form
 
-app.get("/book-table-form/:table_id", function(req, res) {
+app.get("/book_table_form/:table_id", function(req, res) {
     var table_id = req.params.table_id;
-    res.render('book-table', {table_id});
+    res.render('book_table', {table_id});
 });
 
 // Route to book a table
 
-app.post ('/add-booking', async function (req, res) {
+app.post ('/add_booking', async function (req, res) {
     // console.log(req.body)
     var table = new Table();
     table.details_to_book = req.body;
     await table.addBooking(table.details_to_book)
-        res.render('booking-success', {table});
+        res.render('booking_success', {table});
+});
+
+// display menu
+
+app.get("/menu", async function(req, res) {
+    var menu = new Menu()
+    await menu.getMenuList()
+        res.render('menu', {menu});
+});
+
+app.get("/edit_menu", async function(req, res) {
+    var menu = new Menu()
+    await menu.getMenuList()
+        res.render('edit_menu', {menu});
+});
+
+app.get("/edit_item_form/:item_id", async function(req, res) {
+    console.log(req.body)
+    var menu = new Menu();
+    menu.item_id = req.params.item_id;
+    await menu.getMenuItem(req.params.item_id)
+        res.render('edit_menu_form', {menu});
+});
+
+app.post ('/edit_item', async function (req, res) {
+    console.log("body is",  req.body)
+    var menu = new Menu();
+    menu.details_to_edit = req.body;
+    await menu.editItem(menu.details_to_edit)
+        res.render('edit_success', {menu});
 });
 
 

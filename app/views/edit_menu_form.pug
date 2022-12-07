@@ -1,0 +1,17 @@
+extends homepage
+block content  
+    .content
+        //- -console.log(menu)
+        h1 Edit Item #{menu.item_name}
+        form(action="/edit_item" method = "POST")
+            input(type='hidden' name ='item_id' value =menu.item_id)
+            label(for="item_name") Item Name
+            textarea(name="item_name" placeholder = menu.item_name cols="20", rows="1")
+            label(for="item_price") Item Price
+            textarea(name="item_price" placeholder = menu.item_price cols="20", rows="1")
+            label(for="item_category") Item Category
+            textarea(name="item_category" placeholder = menu.item_category cols="20", rows="1")
+            label(for="item_descriptio") Item Description
+            textarea(name="item_description" placeholder = menu.item_description cols="20", rows="3")
+            div 
+            input(type="submit" value ='Update') 

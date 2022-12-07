@@ -2,24 +2,24 @@ doctype html
 html
   head
     style
-      include style1.css
+      include style.css
   body
-  .main-content
+  .main_content
     .logo
         h1 
          a(href='/homepage') RESTAURANT
     .navbar
-        ul(class = "nav-bar") 
+        ul(class = "nav_bar") 
             li 
                 a(href='/homepage') Home
             li 
-                a(href='#') Menu
+                a(href='/menu') Menu
         
     .sign-in
         h1 Sign in
     .book
         .form
-             form(action="/table-status" method="POST") 
+             form(action="/table_status" method="POST") 
                 label(for="selected_date")
                 input(type="date" name="selected_date")
                 div 
