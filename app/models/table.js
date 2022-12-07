@@ -31,7 +31,7 @@ class Table {
     }
 
     async addBooking (details_to_book) {
-        var sql = "INSERT INTO booking_details VALUES (?, ?, ?, ?, ?);"
+        var sql = "INSERT INTO booking_details (table_id, booked_date, name, email, booking_status) VALUES (?, ?, ?, ?, ?);"
         const results = await db.query(sql, [details_to_book.id, details_to_book.booked_date, details_to_book.name, details_to_book.email_id, details_to_book.status]);
     }
 
