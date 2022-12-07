@@ -6,8 +6,8 @@ html
   body
   .main_content
     .logo
-        h1  
-            a(href="/homepage") RESTAURANT
+        img(src='/images/image31.jpg' class="w3-round" align="left"  style="width:10%" height='50px')
+        h3  RESTAURANT
     .navbar
         ul(class = "nav_bar") 
             li 
@@ -17,6 +17,7 @@ html
         
     .sign-in
         h1 Sign in
+        
     .book
         .form
              form(action="/table_status" method="POST") 
@@ -26,10 +27,11 @@ html
                 input(type="submit" value="Check Table Availability")
     
     .content
-        img.mySlides(src='/images/restaurant.jpg' width='900px' height='500px')
-        img.mySlides(src='/images/image2.jpg' width='900px' height='500px')
-        img.mySlides(src='/images/image3.jpg' width='900px' height='500px')
-        img.mySlides(src='/images/image4.jpg' width='900px' height='500px')
+        
+        img.mySlides(src='/images/restaurant.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image2.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image3.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image4.jpg' width='1000px' height='500px')
     script.
         var myIndex = 0;
         carousel();
