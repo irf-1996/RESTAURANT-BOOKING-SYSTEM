@@ -30,7 +30,10 @@ body {
   background-color: black;
   color: white;
 }
-
+.register {
+  background-color: black;
+  color: white;
+}
 .book {
   display: inline-block;
   background-color: rgb(64, 62, 62);
