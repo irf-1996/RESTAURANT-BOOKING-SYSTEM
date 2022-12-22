@@ -1,0 +1,17 @@
+html 
+  head 
+  style 
+    include style.css
+  body
+  .form-signin 
+      h1 Login here
+      form(action='/authenticate' method='POST')
+        label(for='email') Enter your email: 
+        input('name'='email') 
+        br
+        label(for='email') Enter your password: 
+        input('name'='password')
+        input(type='submit' value='Submit')
+  .account_button
+      a(href='/register')
+         button('Create new user') create new user
