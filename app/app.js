@@ -1,6 +1,5 @@
 // Import express.js
 const express = require("express");
-const { User } = require("./models/user");
 // Create express app
 var app = express();
 // Set the sessions
