@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
+<<<<<<< HEAD
 -- Generation Time: Dec 07, 2022 at 10:56 PM
+=======
+-- Generation Time: Dec 05, 2022 at 10:47 AM
+>>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 -- Server version: 8.0.31
 -- PHP Version: 8.0.19
 
@@ -32,14 +36,19 @@ CREATE TABLE `booking_details` (
   `booked_date` date DEFAULT NULL,
   `name` varchar(10) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
+<<<<<<< HEAD
   `booking_status` varchar(20) DEFAULT NULL,
   `booking_id` int NOT NULL
+=======
+  `booking_status` varchar(20) DEFAULT NULL
+>>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking_details`
 --
 
+<<<<<<< HEAD
 INSERT INTO `booking_details` (`table_id`, `booked_date`, `name`, `email`, `booking_status`, `booking_id`) VALUES
 ('01', '2022-12-20', 'Saravanan', 'sara@gmail.com', 'Booked', 1),
 ('02', '2022-12-08', 'Irfana', 'irfana@gmail.com', 'Booked', 2),
@@ -53,40 +62,34 @@ INSERT INTO `booking_details` (`table_id`, `booked_date`, `name`, `email`, `book
 ('06', '2022-12-12', 'Irfana', 'sara@gmail.com', 'Booked', 10),
 ('05', '2022-12-13', 'Surya', 'surya@gmail.com', 'Booked', 11);
 
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Table structure for table `Modules`
 --
 
-CREATE TABLE `menu` (
-  `item_id` varchar(10) DEFAULT NULL,
-  `item_category` varchar(20) DEFAULT NULL,
-  `item_name` varchar(30) DEFAULT NULL,
-  `item_price` varchar(10) DEFAULT NULL,
-  `item_description` varchar(100) DEFAULT NULL
+CREATE TABLE `Modules` (
+  `code` varchar(10) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `Modules`
 --
 
-INSERT INTO `menu` (`item_id`, `item_category`, `item_name`, `item_price`, `item_description`) VALUES
-('01', 'Breakfast', 'Idly', '$ 3', '2 Idly'),
-('02', 'Breakfast', 'Dosa', '$ 2', 'Crispy dosa serrved with chutny and sambar'),
-('03', 'Break', 'Vada', '$ 3', '2 vada'),
-('04', 'Breakfast', 'Pongal', '$ 3', 'Pongal serrved with chutny and sambar'),
-('05', 'Breakfast', 'Pongal', '$ 5', ''),
-('05', 'Breakfast', 'Pongal', '$ 5', ''),
-('05', 'Breakfast', 'Pongal', '$ 5', ''),
-('05', 'Breakfast', 'Pongal', '$ 5', ''),
-('07', 'Dinner', 'Parota', '$ 2', 'Parota served with salna'),
-('09', 'Fresh Juice', 'Orange Juice', '$ 2', 'Orange juice made with fresh oranges'),
-('10', 'Fresh Juice', 'Grape Juice', '$ 2', 'Grape juice made with fresh grapes'),
-('11', 'Breakfast', 'puttu', '$ 2', 'Rice flour stam cooked'),
-('12', 'Lunch', 'Mutton Briyani', '$ 7', 'Basmati rice dum cooked with spices and mutton'),
-('13', 'Lunch', 'Chincken Briyani', '$ 6', 'Basmati rice dum cooked with spices and chicken'),
-('14', 'Lunch', 'Fish Briyani', '$ 6', 'Basmati rice dum cooked with spices and fish');
+INSERT INTO `Modules` (`code`, `name`) VALUES
+('CMP020C101', 'Software Development 1'),
+('CMP020C102', 'Computer Systems'),
+('CMP020C103', 'Mathematics for Computer Science'),
+('CMP020C104', 'Software Development 2'),
+('CMP020C105', 'Computing and Society'),
+('CMP020C106', 'Databases'),
+('PHY020C101', 'Physics Skills and Techniques'),
+('PHY020C102', 'Mathematics for Physics'),
+('PHY020C103', 'Computation for Physics'),
+('PHY020C106', 'Introduction to Astrophysics');
 
 -- --------------------------------------------------------
 
@@ -117,20 +120,84 @@ INSERT INTO `table_details` (`table_id`, `table_number`, `no_of_seats`) VALUES
 --
 
 --
+<<<<<<< HEAD
 -- Indexes for table `booking_details`
 --
 ALTER TABLE `booking_details`
   ADD PRIMARY KEY (`booking_id`);
+=======
+-- Indexes for table `Modules`
+--
+ALTER TABLE `Modules`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- Indexes for table `Programmes`
+--
+ALTER TABLE `Programmes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Programme_Modules`
+--
+ALTER TABLE `Programme_Modules`
+  ADD KEY `programme` (`programme`),
+  ADD KEY `module` (`module`);
+
+--
+-- Indexes for table `Students`
+--
+ALTER TABLE `Students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Student_Programme`
+--
+ALTER TABLE `Student_Programme`
+  ADD KEY `id` (`id`),
+  ADD KEY `programme` (`programme`);
+
+--
+-- Indexes for table `test_table`
+--
+ALTER TABLE `test_table`
+  ADD PRIMARY KEY (`id`);
+>>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `booking_details`
 --
 ALTER TABLE `booking_details`
   MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+=======
+-- AUTO_INCREMENT for table `test_table`
+--
+ALTER TABLE `test_table`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Programme_Modules`
+--
+ALTER TABLE `Programme_Modules`
+  ADD CONSTRAINT `programme_modules_ibfk_1` FOREIGN KEY (`programme`) REFERENCES `Programmes` (`id`),
+  ADD CONSTRAINT `programme_modules_ibfk_2` FOREIGN KEY (`module`) REFERENCES `Modules` (`code`);
+
+--
+-- Constraints for table `Student_Programme`
+--
+ALTER TABLE `Student_Programme`
+  ADD CONSTRAINT `student_programme_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Students` (`id`),
+  ADD CONSTRAINT `student_programme_ibfk_2` FOREIGN KEY (`programme`) REFERENCES `Programmes` (`id`);
+>>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
