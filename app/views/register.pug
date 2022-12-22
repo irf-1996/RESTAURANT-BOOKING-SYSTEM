@@ -1,14 +1,13 @@
-html 
-  head 
-  style 
-    include style.css
-  body
-  .form-signin1 
-    h1 Register here
-    form(action='/set-password' method='POST')
-        label(for='email') Enter your email: 
-        input('name'='email') 
-        label(for='email') Enter your password: 
-        input('name'='password')
-        input(type='submit' value='Submit')
+extends homepage
+block content  
+    .content
+        h1 Register here
+        form(action='/set-password' method='POST')
+            label(for='email') Enter your email: 
+            input('name'='email') 
+            br
+            label(for='email') Enter your password: 
+            input('name'='password')
+            br
+            input(type='submit' value='Submit')
         
