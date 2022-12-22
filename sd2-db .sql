@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
-<<<<<<< HEAD
--- Generation Time: Dec 07, 2022 at 10:56 PM
-=======
 -- Generation Time: Dec 05, 2022 at 10:47 AM
->>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 -- Server version: 8.0.31
 -- PHP Version: 8.0.19
 
@@ -36,12 +32,7 @@ CREATE TABLE `booking_details` (
   `booked_date` date DEFAULT NULL,
   `name` varchar(10) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-<<<<<<< HEAD
-  `booking_status` varchar(20) DEFAULT NULL,
-  `booking_id` int NOT NULL
-=======
   `booking_status` varchar(20) DEFAULT NULL
->>>>>>> 742338783b19c4388cb60960f35fc1f9be54b327
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
