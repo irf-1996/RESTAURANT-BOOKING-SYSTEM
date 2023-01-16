@@ -25,14 +25,6 @@ class User {
     }
   }
 
-  // Add a password to an existing user
-  async setUserPassword(password) {
-    const pw = await bcrypt.hash(password, 10);
-    var sql = "UPDATE Users SET password = ? WHERE Users.id = ?";
-    const result = await db.query(sql, [pw, this.id]);
-    return true;
-  }
-
   // Add a new record to the users table
   async addUser(password) {
     const pw = await bcrypt.hash(password, 10);

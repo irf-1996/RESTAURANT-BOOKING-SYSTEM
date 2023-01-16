@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    style
+      include style.css
+  body
+  -console.log(data)
+  .main_content
+    .logo
+
+        img(src='/images/image5.jpg' class="w3-round" align="left"  style="width:25%" height='50px')
+        h3  
+             a(href='/homepage_user') RESTAURANT
+
+
+    .navbar
+        ul(class = "nav_bar") 
+            
+            li 
+                a(href='/menu_user') Menu
+        
+    .sign-in
+        ul
+
+            li 
+               a(href='/logout') Logout
+        h3 #{data}
+        
+    .book
+        .form
+             form(action="/table_status_user" method="POST") 
+                label(for="selected_date")
+                input(type="date" name="selected_date")
+                div 
+                input(type="submit" value="Check Table Availability")
+    
+    .content
+        
+        img.mySlides(src='/images/image1.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image2.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image3.jpg' width='1000px' height='500px')
+        img.mySlides(src='/images/image6.jpg' width='1000px' height='500px')
+    script.
+        var myIndex = 0;
+        carousel();
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+        } 
+    .contact
+        h1 Contact
+    .footer
+        h1 Connect with us
+        a(href="#") Facebook
+        a(href="#") Instagram
+        a(href="#") Twitter
+    block content
+
+    

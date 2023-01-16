@@ -1,0 +1,51 @@
+extends homepage_user
+block content  
+    .content
+        .main_content1
+          h2 Table 1
+          h2 #{booked_date}
+          if data.includes ("01")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "01") Available    
+        .main_content1
+          h2 Table 2
+          h2 #{booked_date}
+          if data.includes ("02")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "02") Available    
+        .main_content1
+          h2 Table 3
+          h2 #{booked_date}
+          if data.includes ("03")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "03") Available    
+        .main_content1
+          h2 Table 4
+          h2 #{booked_date}
+          if data.includes ("04")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "04") Available    
+        .main_content1
+          h2 Table 5
+          h2 #{booked_date}
+          if data.includes ("05")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "05") Available    
+        .main_content1
+          h2 Table 6
+          h2 #{booked_date}
+          if data.includes ("06")
+              h3 Unavailable    
+          else 
+            h3  
+               a(href="/book_table_form/"+ "06") Available    

@@ -38,58 +38,17 @@ app.get("/homepage", function (req, res) {
   // res.send("Welcome to our restaurant!");
   res.render("homepage");
 });
+
+
 //for register
 app.get("/register", function (req, res) {
   res.render("register");
-});
-app.post("/set-password", async function (req, res) {
-  params = req.body;
-  var user = new User(params.email);
-  try {
-    uId = await user.getIdFromEmail();
-    if (uId) {
-      // If a valid, existing user is found, set the password and redirect to the users single-student page
-      await user.setUserPassword(params.password);
-      res.send("login successfully");
-    } else {
-      // If no existing user is found, add a new one
-      newId = await user.addUser(params.email);
-      res.send(
-        "Perhaps a page where a new user sets a programme would be good here"
-      );
-    }
-  } catch (err) {
-    console.error(`Error while adding password `, err.message);
-  }
 });
 
 app.get("/login", function (req, res) {
   res.render("login");
 });
-// Check submitted email and password pair
-app.post("/authenticate", async function (req, res) {
-  params = req.body;
-  var user = new user(params.email);
-  try {
-    uId = await user.getIdFromEmail();
-    if (uId) {
-      match = await user.authenticate(params.password);
-      if (match) {
-        req.session.uid = uId;
-        req.session.loggedIn = true;
-        console.log(req.session);
-        res.redirect("/homepage");
-      } else {
-        // TODO improve the user journey here
-        res.send("invalid password");
-      }
-    } else {
-      res.send("invalid email");
-    }
-  } catch (err) {
-    console.error(`Error while comparing `, err.message);
-  }
-});
+
 // Logout
 app.get("/logout", function (req, res) {
   req.session.destroy();
@@ -99,9 +58,6 @@ app.get("/logout", function (req, res) {
 // route to get table status
 
 app.post("/table_status", async function (req, res) {
-  // console.log(req.body)
-  // params = req.body;
-  // var booked_date = params.selected_date;
   var booked_date = 2022 - 11 - 30;
   if (req.body) {
     params = req.body;
@@ -112,8 +68,21 @@ app.post("/table_status", async function (req, res) {
   var table = new Table();
   table.booked_date = booked_date;
   await table.getBookingStatus();
-  console.log(table);
   res.render("table", { data: table.booking_status, booked_date });
+});
+
+app.post("/table_status_user", async function (req, res) {
+  var booked_date = 2022 - 11 - 30;
+  if (req.body) {
+    params = req.body;
+    var booked_date = params.selected_date;
+  } else {
+    var booked_date = 2022 - 11 - 30;
+  }
+  var table = new Table();
+  table.booked_date = booked_date;
+  await table.getBookingStatus();
+  res.render("table_user", { data: table.booking_status, booked_date });
 });
 
 // Route to go to booking form
@@ -164,12 +133,13 @@ app.post("/edit_item", async function (req, res) {
   res.render("edit_success", { menu });
 });
 
-app.get("/", function (req, res) {
+app.get("/homepage_user", function (req, res) {
   console.log(req.session);
-  if (req.session.uid) {
-    res.send("Welcome back, " + req.session.uid + "!");
+  if (req.session.loggedIn) {
+    // res.send("Welcome back, " + req.session.email + "!");
+    res.render("homepage_user", {data: req.session.email});
   } else {
-    res.send("Please login to view this page!");
+    res.render("please_login");
   }
   res.end();
 });
@@ -178,18 +148,8 @@ app.post("/set-password", async function (req, res) {
   params = req.body;
   var user = new User(params.email);
   try {
-    uId = await user.getIdFromEmail();
-    if (uId) {
-      // If a valid, existing user is found, set the password and redirect to the users single-student page
-      await user.setUserPassword(params.password);
-      res.redirect("/single-student/" + uId);
-    } else {
-      // If no existing user is found, add a new one
-      newId = await user.addUser(params.email);
-      res.send(
-        "Perhaps a page where a new user sets a programme would be good here"
-      );
-    }
+    newId = await user.addUser(params.password);
+    res.redirect("/login");
   } catch (err) {
     console.error(`Error while adding password `, err.message);
   }
@@ -205,8 +165,11 @@ app.post("/authenticate", async function (req, res) {
       if (match) {
         req.session.uid = uId;
         req.session.loggedIn = true;
+        req.session.email = user.email;
         console.log(req.session);
-        res.redirect("/single-student/" + uId);
+        console.log("User is ", user)
+        var user_email = user.email;
+        res.render("homepage_user", {data : user_email});
       } else {
         // TODO improve the user journey here
         res.send("invalid password");
