@@ -55,7 +55,7 @@ class User {
 
   async retretiveBooking() {
     // var sql = "select * from booking_details where email=?";
-    var sql = "SELECT table_id, DATE_FORMAT(booked_date, '%e %M %Y %W') AS booked_date, name, email, booking_status, booking_id FROM booking_details WHERE email= ? ORDER BY booked_date";
+    var sql = "SELECT table_id, DATE_FORMAT(booked_date, '%e %M %Y %W') AS booked_date, name, email, booking_status, booking_id FROM booking_details WHERE email= ? ORDER BY booked_date ASC";
     const results = await db.query (sql, [this.email]);
     if (results) {
           this.user_booking = results;
