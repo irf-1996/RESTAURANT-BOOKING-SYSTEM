@@ -154,7 +154,9 @@ app.get("/homepage_user", async function (req, res) {
 
 app.post("/set-password", async function (req, res) {
   params = req.body;
-  var user = new User(params.email);
+  var user = new User();
+  user.email = params.email;
+  user.user_name = params.user_name;
   try {
     newId = await user.addUser(params.password);
     res.redirect("/login");

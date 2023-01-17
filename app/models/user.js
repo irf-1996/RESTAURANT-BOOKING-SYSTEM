@@ -7,20 +7,23 @@ class User {
 
   // Email of the user
   email;
+  user_name;
 
   user_booking;
 
-  constructor(email) {
+  constructor(email, user_name) {
     this.email = email;
+    this.user_name = user_name;
   }
 
   // Get an existing user id from an email address, or return false if not found
   async getIdFromEmail() {
-    var sql = "SELECT id FROM Users WHERE Users.email = ?";
+    var sql = "SELECT id, user_name FROM Users WHERE Users.email = ?";
     const result = await db.query(sql, [this.email]);
     // TODO LOTS OF ERROR CHECKS HERE..
     if (JSON.stringify(result) != "[]") {
       this.id = result[0].id;
+      this.user_name = result[0].user_name;
       return this.id;
     } else {
       return false;
@@ -30,8 +33,8 @@ class User {
   // Add a new record to the users table
   async addUser(password) {
     const pw = await bcrypt.hash(password, 10);
-    var sql = "INSERT INTO Users (email, password) VALUES (? , ?)";
-    const result = await db.query(sql, [this.email, pw]);
+    var sql = "INSERT INTO Users (email, password, user_name) VALUES (? , ?, ?)";
+    const result = await db.query(sql, [this.email, pw, this.user_name]);
     console.log(result.insertId);
     this.id = result.insertId;
     return true;
