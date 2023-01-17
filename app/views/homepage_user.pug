@@ -17,14 +17,15 @@ html
         ul(class = "nav_bar") 
             
             li 
-                a(href='/menu_user') Menu
+                a(href='/menu') Menu
         
     .sign-in
         ul
-
             li 
                a(href='/logout') Logout
-        h3 #{data}
+        if (data)
+
+            h3 #{data.email}
         
     .book
         .form
@@ -56,6 +57,13 @@ html
         } 
     .contact
         h1 Contact
+            h3 My Bookings
+                if (data.user_booking) 
+                     table(border=1)
+                      for item in data.user_booking 
+                             tr  
+                               td #{item.booked_date}
+                               td Table #{item.table_id}
     .footer
         h1 Connect with us
         a(href="#") Facebook

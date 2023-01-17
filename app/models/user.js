@@ -8,6 +8,8 @@ class User {
   // Email of the user
   email;
 
+  user_booking;
+
   constructor(email) {
     this.email = email;
   }
@@ -47,7 +49,16 @@ class User {
       return false;
     }
   }
-}
+
+  async retretiveBooking() {
+    var sql = "select * from booking_details where email=?";
+    const results = await db.query (sql, [this.email]);
+    if (results) {
+          this.user_booking = results;
+          // console.log("booking in class", this.user_booking);
+        }
+    }
+  }
 
 module.exports = {
   User,

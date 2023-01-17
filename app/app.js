@@ -110,6 +110,12 @@ app.get("/menu", async function (req, res) {
   res.render("menu", { menu });
 });
 
+app.get("/menu_user", async function (req, res) {
+  var menu = new Menu();
+  await menu.getMenuList();
+  res.render("menu_user", { menu });
+});
+
 app.get("/edit_menu", async function (req, res) {
   var menu = new Menu();
   await menu.getMenuList();
@@ -133,11 +139,13 @@ app.post("/edit_item", async function (req, res) {
   res.render("edit_success", { menu });
 });
 
-app.get("/homepage_user", function (req, res) {
+app.get("/homepage_user", async function (req, res) {
   console.log(req.session);
   if (req.session.loggedIn) {
     // res.send("Welcome back, " + req.session.email + "!");
-    res.render("homepage_user", {data: req.session.email});
+    var user = new User(req.session.email);
+    await user.retretiveBooking();
+    res.render("homepage_user", {data: User});
   } else {
     res.render("please_login");
   }
@@ -167,9 +175,11 @@ app.post("/authenticate", async function (req, res) {
         req.session.loggedIn = true;
         req.session.email = user.email;
         console.log(req.session);
-        console.log("User is ", user)
+        await user.retretiveBooking();
         var user_email = user.email;
-        res.render("homepage_user", {data : user_email});
+        var booking = user.user_booking;
+        // console.log("Booking is ", booking);
+        res.render("homepage_user", { data: user });
       } else {
         // TODO improve the user journey here
         res.send("invalid password");

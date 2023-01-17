@@ -1,0 +1,13 @@
+extends homepage_user
+block content  
+    .content
+        h1 Menu 
+        table(border=1)
+            for item in menu.all_items 
+                tr  
+                    td #{item.item_category}
+                    td #{item.item_name}
+                    td #{item.item_price}
+
+
+        a(href="/edit_menu") Edit Menu
