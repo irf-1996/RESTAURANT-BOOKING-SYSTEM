@@ -54,11 +54,11 @@ class User {
   }
 
   async retretiveBooking() {
-    var sql = "select * from booking_details where email=?";
+    // var sql = "select * from booking_details where email=?";
+    var sql = "SELECT table_id, DATE_FORMAT(booked_date, '%e %M %Y %W') AS booked_date, name, email, booking_status, booking_id FROM booking_details WHERE email= ? ORDER BY booked_date";
     const results = await db.query (sql, [this.email]);
     if (results) {
           this.user_booking = results;
-          // console.log("booking in class", this.user_booking);
         }
     }
   }

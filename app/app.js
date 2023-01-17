@@ -142,7 +142,6 @@ app.post("/edit_item", async function (req, res) {
 app.get("/homepage_user", async function (req, res) {
   console.log(req.session);
   if (req.session.loggedIn) {
-    // res.send("Welcome back, " + req.session.email + "!");
     var user = new User(req.session.email);
     await user.retretiveBooking();
     res.render("homepage_user", {data: User});
@@ -164,6 +163,7 @@ app.post("/set-password", async function (req, res) {
     console.error(`Error while adding password `, err.message);
   }
 });
+
 // Check submitted email and password pair
 app.post("/authenticate", async function (req, res) {
   params = req.body;
@@ -180,7 +180,6 @@ app.post("/authenticate", async function (req, res) {
         await user.retretiveBooking();
         var user_email = user.email;
         var booking = user.user_booking;
-        // console.log("Booking is ", booking);
         res.render("homepage_user", { data: user });
       } else {
         // TODO improve the user journey here
